@@ -7,6 +7,7 @@ import { generateAuth } from "./auth.gen.js";
 import { generateValidation } from "./validation.gen.js";
 import { generateRateLimit } from "./rate-limit.gen.js";
 import { generateDocker } from "./docker.gen.js";
+import { generateRegex } from "./regex.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -34,6 +35,8 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   if (config.docker) {
     files.push(...generateDocker(config));
   }
+
+  files.push(...generateRegex());
 
   return files;
 }
