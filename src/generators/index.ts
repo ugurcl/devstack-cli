@@ -11,6 +11,7 @@ import { generateRegex } from "./regex.gen.js";
 import { generateValidate } from "./validate.gen.js";
 import { generateTransform } from "./transform.gen.js";
 import { generateResponse } from "./response.gen.js";
+import { generateQueryBuilder } from "./query-builder.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -43,6 +44,10 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   files.push(...generateValidate());
   files.push(...generateTransform());
   files.push(...generateResponse());
+
+  if (config.database) {
+    files.push(...generateQueryBuilder());
+  }
 
   return files;
 }
