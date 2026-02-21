@@ -15,12 +15,39 @@ Run `devstack init` and answer a few questions. It generates a complete project 
 - **Express + TypeScript** — strict mode, ESM imports, ready to build
 - **MongoDB + Mongoose** — connection config, environment variables
 - **JWT Authentication** — register, login, refresh token rotation, logout
-- **Zod Validation** — request body validation middleware
+- **Zod Validation** — request body validation middleware + common schemas
 - **Rate Limiting** — express-rate-limit preconfigured
 - **Error Handling** — custom AppError class, async wrapper, global error middleware
 - **Docker** — Dockerfile, docker-compose with MongoDB service
 
 Every feature is optional. Pick what you need during setup.
+
+## Built-in utilities
+
+These are always included in every generated project:
+
+| Utility | Description |
+|---------|-------------|
+| **Regex patterns** | Email, URL, slug, phone, credit card, IP, JWT and more |
+| **Validators** | isEmail, isURL, isStrongPassword, isSlug, isMongoId, isTCKimlik... |
+| **String transformers** | camelCase, snake_case, kebab-case, PascalCase, toSlug, maskEmail, stripHTML |
+| **API response helpers** | sendSuccess, sendError, sendPaginated, sendCreated, sendNoContent |
+| **Crypto helpers** | generateRandomString, hashString, generateOTP, generateResetToken |
+| **Date helpers** | formatDate, formatDateTime, timeAgo, isExpired, addDays, diffInDays |
+| **File helpers** | formatFileSize, getFileExtension, isImage, isDocument, isVideo |
+
+When **database** is enabled, these are also included:
+
+| Utility | Description |
+|---------|-------------|
+| **Query builder** | Chainable MongoDB query builder — filtering, sorting, field selection, pagination |
+| **Slug utility** | generateSlug with Turkish character support, generateUniqueSlug with DB check |
+
+When **validation** is enabled:
+
+| Utility | Description |
+|---------|-------------|
+| **Zod schemas** | objectId, email, password, pagination, auth schemas |
 
 ## Generated project structure
 
@@ -44,10 +71,22 @@ my-app/
 │   │   ├── error.middleware.ts
 │   │   ├── validate.middleware.ts
 │   │   └── rateLimiter.middleware.ts
+│   ├── schemas/
+│   │   ├── common.schema.ts
+│   │   └── auth.schema.ts
 │   └── utils/
 │       ├── appError.ts
 │       ├── catchAsync.ts
-│       └── token.util.ts
+│       ├── token.util.ts
+│       ├── regex.util.ts
+│       ├── validate.util.ts
+│       ├── transform.util.ts
+│       ├── response.util.ts
+│       ├── crypto.util.ts
+│       ├── date.util.ts
+│       ├── file.util.ts
+│       ├── queryBuilder.util.ts
+│       └── slug.util.ts
 ├── .env
 ├── .env.example
 ├── .gitignore
