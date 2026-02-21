@@ -14,6 +14,7 @@ import { generateResponse } from "./utils/response.gen.js";
 import { generateQueryBuilder } from "./utils/query-builder.gen.js";
 import { generateSchemas } from "./utils/schemas.gen.js";
 import { generateSlug } from "./utils/slug.gen.js";
+import { generateCrypto } from "./utils/crypto.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -46,6 +47,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   files.push(...generateValidate());
   files.push(...generateTransform());
   files.push(...generateResponse());
+  files.push(...generateCrypto());
 
   if (config.database) {
     files.push(...generateQueryBuilder());
