@@ -12,6 +12,8 @@ import { generateValidate } from "./validate.gen.js";
 import { generateTransform } from "./transform.gen.js";
 import { generateResponse } from "./response.gen.js";
 import { generateQueryBuilder } from "./query-builder.gen.js";
+import { generateSchemas } from "./schemas.gen.js";
+import { generateSlug } from "./slug.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -47,6 +49,11 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
 
   if (config.database) {
     files.push(...generateQueryBuilder());
+    files.push(...generateSlug());
+  }
+
+  if (config.validation) {
+    files.push(...generateSchemas(config));
   }
 
   return files;
