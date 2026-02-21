@@ -1,4 +1,4 @@
-import { ProjectConfig, FileOutput } from "../types/index.js";
+import { ProjectConfig, FileOutput } from "../../types/index.js";
 
 export function generateDocker(config: ProjectConfig): FileOutput[] {
   return [
