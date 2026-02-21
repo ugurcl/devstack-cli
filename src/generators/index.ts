@@ -7,13 +7,13 @@ import { generateAuth } from "./features/auth.gen.js";
 import { generateValidation } from "./features/validation.gen.js";
 import { generateRateLimit } from "./features/rate-limit.gen.js";
 import { generateDocker } from "./features/docker.gen.js";
-import { generateRegex } from "./regex.gen.js";
-import { generateValidate } from "./validate.gen.js";
-import { generateTransform } from "./transform.gen.js";
-import { generateResponse } from "./response.gen.js";
-import { generateQueryBuilder } from "./query-builder.gen.js";
-import { generateSchemas } from "./schemas.gen.js";
-import { generateSlug } from "./slug.gen.js";
+import { generateRegex } from "./utils/regex.gen.js";
+import { generateValidate } from "./utils/validate.gen.js";
+import { generateTransform } from "./utils/transform.gen.js";
+import { generateResponse } from "./utils/response.gen.js";
+import { generateQueryBuilder } from "./utils/query-builder.gen.js";
+import { generateSchemas } from "./utils/schemas.gen.js";
+import { generateSlug } from "./utils/slug.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
