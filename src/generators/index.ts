@@ -9,6 +9,7 @@ import { generateRateLimit } from "./rate-limit.gen.js";
 import { generateDocker } from "./docker.gen.js";
 import { generateRegex } from "./regex.gen.js";
 import { generateValidate } from "./validate.gen.js";
+import { generateTransform } from "./transform.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -39,6 +40,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
 
   files.push(...generateRegex());
   files.push(...generateValidate());
+  files.push(...generateTransform());
 
   return files;
 }
