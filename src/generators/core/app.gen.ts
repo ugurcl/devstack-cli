@@ -1,4 +1,4 @@
-import { ProjectConfig, FileOutput } from "../types/index.js";
+import { ProjectConfig, FileOutput } from "../../types/index.js";
 
 export function generateApp(config: ProjectConfig): FileOutput[] {
   return [

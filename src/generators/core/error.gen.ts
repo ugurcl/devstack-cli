@@ -1,4 +1,4 @@
-import { FileOutput } from "../types/index.js";
+import { FileOutput } from "../../types/index.js";
 
 export function generateError(): FileOutput[] {
   return [
