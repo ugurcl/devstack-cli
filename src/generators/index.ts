@@ -1,7 +1,7 @@
 import { ProjectConfig, FileOutput } from "../types/index.js";
-import { generateBase } from "./base.gen.js";
-import { generateApp } from "./app.gen.js";
-import { generateError } from "./error.gen.js";
+import { generateBase } from "./core/base.gen.js";
+import { generateApp } from "./core/app.gen.js";
+import { generateError } from "./core/error.gen.js";
 import { generateDatabase } from "./database.gen.js";
 import { generateAuth } from "./auth.gen.js";
 import { generateValidation } from "./validation.gen.js";
