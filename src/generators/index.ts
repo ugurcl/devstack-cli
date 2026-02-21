@@ -16,6 +16,7 @@ import { generateSchemas } from "./utils/schemas.gen.js";
 import { generateSlug } from "./utils/slug.gen.js";
 import { generateCrypto } from "./utils/crypto.gen.js";
 import { generateDate } from "./utils/date.gen.js";
+import { generateFileHelper } from "./utils/file-helper.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -50,6 +51,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   files.push(...generateResponse());
   files.push(...generateCrypto());
   files.push(...generateDate());
+  files.push(...generateFileHelper());
 
   if (config.database) {
     files.push(...generateQueryBuilder());
