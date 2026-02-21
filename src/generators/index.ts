@@ -10,6 +10,7 @@ import { generateDocker } from "./docker.gen.js";
 import { generateRegex } from "./regex.gen.js";
 import { generateValidate } from "./validate.gen.js";
 import { generateTransform } from "./transform.gen.js";
+import { generateResponse } from "./response.gen.js";
 
 export function generateProject(config: ProjectConfig): FileOutput[] {
   const files: FileOutput[] = [];
@@ -41,6 +42,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   files.push(...generateRegex());
   files.push(...generateValidate());
   files.push(...generateTransform());
+  files.push(...generateResponse());
 
   return files;
 }
