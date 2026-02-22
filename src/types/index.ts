@@ -7,6 +7,7 @@ export interface ProjectConfig {
   errorHandling: boolean;
   docker: boolean;
   gitInit: boolean;
+  license: "MIT" | "Apache-2.0" | "ISC" | "none";
 }
 
 export interface FileOutput {
