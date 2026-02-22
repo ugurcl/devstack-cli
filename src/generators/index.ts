@@ -8,6 +8,7 @@ import { generateValidation } from "./features/validation.gen.js";
 import { generateRateLimit } from "./features/rate-limit.gen.js";
 import { generateDocker } from "./features/docker.gen.js";
 import { generateRequestId } from "./features/request-id.gen.js";
+import { generateCompression } from "./features/compression.gen.js";
 import { generateRegex } from "./utils/regex.gen.js";
 import { generateValidate } from "./utils/validate.gen.js";
 import { generateTransform } from "./utils/transform.gen.js";
@@ -47,6 +48,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   }
 
   files.push(...generateRequestId());
+  files.push(...generateCompression());
 
   files.push(...generateRegex());
   files.push(...generateValidate());
