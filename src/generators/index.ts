@@ -12,6 +12,7 @@ import { generateCompression } from "./features/compression.gen.js";
 import { generateRequestLogger } from "./features/request-logger.gen.js";
 import { generateSlowDown } from "./features/slow-down.gen.js";
 import { generateSanitize } from "./features/sanitize.gen.js";
+import { generateApiKey } from "./features/api-key.gen.js";
 import { generateRegex } from "./utils/regex.gen.js";
 import { generateValidate } from "./utils/validate.gen.js";
 import { generateTransform } from "./utils/transform.gen.js";
@@ -55,6 +56,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   files.push(...generateRequestLogger());
   files.push(...generateSlowDown());
   files.push(...generateSanitize());
+  files.push(...generateApiKey());
 
   files.push(...generateRegex());
   files.push(...generateValidate());
