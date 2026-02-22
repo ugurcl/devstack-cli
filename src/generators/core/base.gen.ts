@@ -39,6 +39,9 @@ export function generateBase(config: ProjectConfig): FileOutput[] {
     deps["express-rate-limit"] = "^7.1.5";
   }
 
+  deps["compression"] = "^1.7.4";
+  devDeps["@types/compression"] = "^1.7.5";
+
   const packageJson = {
     name: config.name,
     version: "1.0.0",
