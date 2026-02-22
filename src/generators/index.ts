@@ -2,6 +2,7 @@ import { ProjectConfig, FileOutput } from "../types/index.js";
 import { generateBase } from "./core/base.gen.js";
 import { generateApp } from "./core/app.gen.js";
 import { generateError } from "./core/error.gen.js";
+import { generateReadme } from "./core/readme.gen.js";
 import { generateDatabase } from "./features/database.gen.js";
 import { generateAuth } from "./features/auth.gen.js";
 import { generateValidation } from "./features/validation.gen.js";
@@ -30,6 +31,7 @@ export function generateProject(config: ProjectConfig): FileOutput[] {
   files.push(...generateBase(config));
   files.push(...generateApp(config));
   files.push(...generateError());
+  files.push(...generateReadme(config));
 
   if (config.database) {
     files.push(...generateDatabase());
