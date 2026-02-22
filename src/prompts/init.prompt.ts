@@ -1,4 +1,4 @@
-import { input, confirm } from "@inquirer/prompts";
+import { input, confirm, select } from "@inquirer/prompts";
 import { ProjectConfig } from "../types/index.js";
 
 export async function getProjectConfig(): Promise<ProjectConfig> {
@@ -40,6 +40,17 @@ export async function getProjectConfig(): Promise<ProjectConfig> {
     default: true,
   });
 
+  const license = await select({
+    message: "License:",
+    choices: [
+      { name: "MIT", value: "MIT" as const },
+      { name: "Apache 2.0", value: "Apache-2.0" as const },
+      { name: "ISC", value: "ISC" as const },
+      { name: "None", value: "none" as const },
+    ],
+    default: "MIT",
+  });
+
   const gitInit = await confirm({
     message: "Initialize git repository?",
     default: true,
@@ -54,5 +65,6 @@ export async function getProjectConfig(): Promise<ProjectConfig> {
     errorHandling: true,
     docker,
     gitInit,
+    license,
   };
 }
