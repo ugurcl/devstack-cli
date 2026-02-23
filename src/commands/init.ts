@@ -1,15 +1,41 @@
 import path from "path";
 import { execSync } from "child_process";
+import { input } from "@inquirer/prompts";
 import ora from "ora";
 import { getProjectConfig } from "../prompts/init.prompt.js";
 import { generateProject } from "../generators/index.js";
 import { writeProjectFiles, projectExists } from "../utils/file.util.js";
 import { logger } from "../utils/logger.util.js";
+import { getPreset, PRESET_NAMES } from "../presets/index.js";
+import { ProjectConfig } from "../types/index.js";
 
-export async function initCommand(): Promise<void> {
+export async function initCommand(options: { preset?: string }): Promise<void> {
   logger.title("devstack — project scaffolder");
 
-  const config = await getProjectConfig();
+  let config: ProjectConfig;
+
+  if (options.preset) {
+    const preset = getPreset(options.preset);
+    if (!preset) {
+      logger.error(`Unknown preset "${options.preset}". Available: ${PRESET_NAMES.join(", ")}`);
+      process.exit(1);
+    }
+
+    const name = await input({
+      message: "Project name:",
+      validate: (val) => {
+        if (!val.trim()) return "Project name is required";
+        if (!/^[a-z0-9-_]+$/.test(val.trim()))
+          return "Only lowercase letters, numbers, hyphens and underscores";
+        return true;
+      },
+    });
+
+    config = { name: name.trim(), ...preset };
+    logger.info(`Using preset: ${options.preset}`);
+  } else {
+    config = await getProjectConfig();
+  }
   const projectDir = path.resolve(process.cwd(), config.name);
 
   if (await projectExists(projectDir)) {
