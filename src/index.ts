@@ -11,6 +11,7 @@ program
 program
   .command("init")
   .description("Create a new project")
+  .option("--preset <name>", "Use a preset (api, minimal, no-auth)")
   .action(initCommand);
 
 program.parse();
